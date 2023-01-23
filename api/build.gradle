@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.6.1"
+}
+
+group 'ru.koshelev.api'
+version 'unspecified'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.1'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+
+
+    implementation group: 'org.aeonbits.owner', name: 'owner', version: '1.0.12'
+
+
+
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.5'
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.5'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.6'
+
+
+
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties System.getProperties()
+    testLogging {
+        events "PASSED","FAILED","SKIPPED"
+        showStandardStreams = true
+        exceptionFormat = 'full'
+    }
+    test.outputs.upToDateWhen {false}
+}
+compileJava.options.encoding = 'UTF-8'
+
+//tasks.withType(JavaCompile).configureEach {
+//    options.encoding = 'UTF-8'
+//}
