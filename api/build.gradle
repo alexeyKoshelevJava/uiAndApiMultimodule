@@ -1,10 +1,14 @@
 plugins {
     id 'java'
-    id "io.freefair.lombok" version "6.6.1"
+    id 'io.freefair.lombok' version '6.6.1'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group 'ru.koshelev.api'
 version 'unspecified'
+
+
+def junitVersion = '5.8.1'
 
 
 repositories {
@@ -22,32 +26,42 @@ dependencies {
     implementation group: 'org.aeonbits.owner', name: 'owner', version: '1.0.12'
 
 
-
-
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.5'
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.5'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.6'
 
 
-
     testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.19'
+
+    testImplementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.12.1'
+    implementation group: 'io.qameta.allure', name: 'allure-commandline', version: '2.12.1'
+    implementation group: 'io.qameta.allure', name: 'allure-assertj', version: '2.12.1'
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.12.1'
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.12.1'
+
+
 }
 
 test {
     useJUnitPlatform()
     systemProperties System.getProperties()
     testLogging {
-        events "PASSED","FAILED","SKIPPED"
+        events "PASSED", "FAILED", "SKIPPED"
         showStandardStreams = true
         exceptionFormat = 'full'
     }
-    test.outputs.upToDateWhen {false}
+    test.outputs.upToDateWhen { false }
 }
 compileJava.options.encoding = 'UTF-8'
 
 //tasks.withType(JavaCompile).configureEach {
 //    options.encoding = 'UTF-8'
 //}
+
+

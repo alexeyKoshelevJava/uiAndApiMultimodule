@@ -1,4 +1,6 @@
-rootProject.name = 'apiProject'
+
+
 include('api')
+rootProject.name = 'apiProject'
 
 

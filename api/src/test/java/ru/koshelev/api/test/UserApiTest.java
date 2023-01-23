@@ -2,14 +2,14 @@ package ru.koshelev.api.test;
 
 
 
-import com.github.javafaker.Faker;
+
 import org.junit.jupiter.api.Test;
 import ru.koshelev.api.payloads.UserPayloads;
 import ru.koshelev.api.responces.UserRegistrationResponse;
 import ru.koshelev.api.services.UserApiService;
 
 
-import java.util.Locale;
+
 
 import static org.hamcrest.Matchers.equalTo;
 import static ru.koshelev.api.conditions.Conditions.*;
