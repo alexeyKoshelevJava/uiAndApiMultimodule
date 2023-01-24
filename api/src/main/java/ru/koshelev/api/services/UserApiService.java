@@ -6,7 +6,7 @@ import ru.koshelev.api.assertions.AssertableResponse;
 import ru.koshelev.api.payloads.UserPayloads;
 
 public class UserApiService extends ApiService {
-    @Step
+    @Step("api register user: {user}")
     public AssertableResponse registerUser(UserPayloads user) {
         return new AssertableResponse(setUp()
                 .body(user)

@@ -3,6 +3,7 @@ package ru.koshelev.api.test;
 
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.koshelev.api.payloads.UserPayloads;
 import ru.koshelev.api.responces.UserRegistrationResponse;
@@ -21,7 +22,7 @@ public class UserApiTest extends BeforeUsersTest {
 
 
 //
-
+@DisplayName("Получение юзера по ID")
     @Test
     public void getUserAndCheckById() {
         userApiService.getUsers()
@@ -29,7 +30,7 @@ public class UserApiTest extends BeforeUsersTest {
                 .shouldHave(bodyField("data[0].id", equalTo(7)));
 
     }
-
+@DisplayName("Проверка создания юзера")
     @Test
     public void createUser() {
         //given

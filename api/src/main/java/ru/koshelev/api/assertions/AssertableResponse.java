@@ -13,7 +13,7 @@ import ru.koshelev.api.conditions.Condition;
 public class AssertableResponse {
     private final Response response;
 
-    @Step
+    @Step("api should have: {condition}")
     public AssertableResponse shouldHave(Condition condition) {
         log.info("About for check condition {}", condition);
         condition.check(response);

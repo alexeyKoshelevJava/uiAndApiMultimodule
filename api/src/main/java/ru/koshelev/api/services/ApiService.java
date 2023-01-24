@@ -1,5 +1,6 @@
 package ru.koshelev.api.services;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.Filter;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -27,8 +28,8 @@ public class ApiService {
 //        boolean enable = Boolean.valueOf(System.getProperty("logging", "true"));
 //        if (enable) {
         if(config.logging()){
-            return List.of(new RequestLoggingFilter(), new ResponseLoggingFilter());
+            return List.of(new RequestLoggingFilter(), new ResponseLoggingFilter(),new AllureRestAssured());
         }
-        return List.of();
+        return List.of(new AllureRestAssured());
     }
 }
