@@ -4,10 +4,7 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage("checkout") {
-             branch: 'master'
-             url: 'https://github.com/alexeyKoshelevJava/uiAndApiMultimodule.git'
-        }
+
         stage('build'){
             steps {
                 sh 'clean api:assemble'
