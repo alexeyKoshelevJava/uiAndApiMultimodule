@@ -1,11 +1,22 @@
-node {
-    stage("checkout repo"){
-        git branch: 'master'
-        url: 'https://github.com/alexeyKoshelevJava/uiAndApiMultimodule.git'
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
     }
-    stage("build"){
-       sh "./gradle clean api:assemble"
-}
-    stage("run api test"){
-       sh "./gradle clean api:test"}
+    stages {
+        stage("checkout") {
+             branch: 'master'
+             url: 'https://github.com/alexeyKoshelevJava/uiAndApiMultimodule.git'
+        }
+        stage('build'){
+            steps {
+                sh 'clean api:assemble'
+                }
+        }
+        stage('test') {
+            steps {
+                sh 'clean api:test'
+            }
+        }
+    }
 }
